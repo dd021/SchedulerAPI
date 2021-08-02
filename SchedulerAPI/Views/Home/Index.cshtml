@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <button class="btn btn-dark" data-toggle="modal" data-target="#add">New Schedule</button>
+</div>
+<hr />
+<div class="row" id="all_records">
+
+</div>
+
+<!-- Add Quote Modal Dialog Box -->
+<div class="modal" role="dialog" id="add">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add New Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Enter Title: </label>
+                        <input type="text" class="form-control" id="title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="details">Enter Details: </label>
+                        <textarea class="form-control" id="details"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Choose Status: </label>
+                        <select class="form-control" id="status">
+                            <option value="Enable">Enable</option>
+                            <option value="Disable">Disable</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="result">
+
+                    </div>
+                    <button type="button" onclick="addSchedule()" class="btn btn-dark">Save Schedule</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Schedule Modal Dialog Box -->
+<div class="modal" tabindex="-1" role="dialog" id="edit">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Edit Schedule Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="s_title">Title: </label>
+                        <input type="text" class="form-control" id="s_title" />
+                        <input type="hidden" id="s_id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="s_details">Details: </label>
+                        <textarea class="form-control" id="s_details"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="s_status">Status: </label>
+                        <select class="form-control" id="s_status">
+                            <option value="Enable">Enable</option>
+                            <option value="Disable">Disable</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="edit_result">
+
+                    </div>
+                    <button type="button" onclick="updateSchedule()" class="btn btn-dark">Update Schedule</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/script.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            displaySchedules();
+        });
+    </script>
+}
